@@ -34,6 +34,7 @@ export default class Searchbar extends React.Component {
 
           <input
             type="text"
+            name="pictureName"
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
