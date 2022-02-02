@@ -1,15 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { IconButton1 } from './IconButton.style';
 
 // Закрытие модального окна
 const IconButton = ({ children, onClick, ...allyProps }) => (
-  <button
+  <IconButton1
     type="button"
     onClick={onClick}
     {...allyProps}
   >
     {children}
-  </button>
+  </IconButton1>
 );
 
 IconButton.defaultProps = {

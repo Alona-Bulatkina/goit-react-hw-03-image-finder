@@ -1,7 +1,16 @@
-import React from "react";
+import PropTypes from 'prop-types';
+import { Button1, ButtonWrapper } from './Button.style';
 
-const Button = () => {
-    <button type="submit">Load more</button>
+const Button = ({ onClick }) => (
+  <ButtonWrapper>
+    <Button1 type="button" onClick={onClick}>
+      Load more
+    </Button1>
+  </ButtonWrapper>
+);
+
+Button.propTypes = {
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Button;
