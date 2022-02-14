@@ -7,7 +7,6 @@ import Message from './components/Message/Message';
 import Modal from './components/Modal/Modal';
 import IconButton from './components/IconButton/IconButton';
 import { ToastContainer } from 'react-toastify';
-// import { ReactComponent as CloseIcon } from './icon/icon.svg';
 import { BsX } from 'react-icons/bs';
 
 
@@ -99,12 +98,6 @@ class App extends Component {
     const { images, currentPage, isLoading, showModal, largeImage, error, totalHits } = this.state;
     const needToShowLoadMore = totalHits / 12 > currentPage; // Нужны доп проверки;
    
-    // const [currentHitsOnPage, setCurrentHitsOnPage] = useState(null);
-    // {currentHitsOnPage === 12 && !loading && (
-    // <Button onClick={handleLoadMoreClick} />
-    // )}
-    // после успешного запроса нужно установить 
-    // setCurrentHitsOnPage(hits.length);
      
     return (
       <>

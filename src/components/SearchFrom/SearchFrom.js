@@ -20,8 +20,7 @@ class SearchFrom extends Component {
     e.preventDefault();
 
     // // Запрещает отправку пустого инпута
-    // if (!this.state.query) return;
-    if (this.state.query.trim() === '') {
+        if (this.state.query.trim() === '') {
       return toast('Введите запрос');
     }
 
@@ -29,12 +28,6 @@ class SearchFrom extends Component {
     this.props.onSearch(this.state.query);
     this.setState({query: ''});
     };
-
-  // resetForm = () =>
-  //   this.setState({
-  //     query: '',
-  //   });
-
   render() {
     return (
       <SearchForm1 onSubmit={this.handleSubmit}>
