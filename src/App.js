@@ -7,7 +7,8 @@ import Message from './components/Message/Message';
 import Modal from './components/Modal/Modal';
 import IconButton from './components/IconButton/IconButton';
 import { ToastContainer } from 'react-toastify';
-import { ReactComponent as CloseIcon } from './icon/icon.svg';
+// import { ReactComponent as CloseIcon } from './icon/icon.svg';
+import { BsX } from 'react-icons/bs';
 
 
 import fetchImages from './api/api-services';
@@ -49,11 +50,12 @@ class App extends Component {
     });
 
     try {
-      const { hits } = await fetchImages(searchQuery, currentPage);
-
+      const { hits,  totalHits } = await fetchImages(searchQuery, currentPage);
+      
       this.setState(prevState => ({
         images: [...prevState.images, ...hits],
         currentPage: prevState.currentPage + 1,
+        totalHits: totalHits,
       }));
 
       if (currentPage !== 1) {
@@ -94,9 +96,16 @@ class App extends Component {
   };
 
   render() {
-    const { images, isLoading, showModal, largeImage, error } = this.state;
-    const needToShowLoadMore = images.length > 0 && images.length >= 12; // Нужны доп проверки;
-
+    const { images, currentPage, isLoading, showModal, largeImage, error, totalHits } = this.state;
+    const needToShowLoadMore = totalHits / 12 > currentPage; // Нужны доп проверки;
+   
+    // const [currentHitsOnPage, setCurrentHitsOnPage] = useState(null);
+    // {currentHitsOnPage === 12 && !loading && (
+    // <Button onClick={handleLoadMoreClick} />
+    // )}
+    // после успешного запроса нужно установить 
+    // setCurrentHitsOnPage(hits.length);
+     
     return (
       <>
         <Searchbar onSearch={this.onChangeQuery} />
@@ -112,10 +121,10 @@ class App extends Component {
         {needToShowLoadMore && <Button onClick={this.getImages} />}
 
         {showModal && (
-          <Modal onClose={this.toggleModal}>
+          <Modal onClose={this.toggleModal} >
             <div>
-              <IconButton onClick={this.toggleModal} aria-label="Close modal">
-                <CloseIcon width="20px" height="20px" fill="#7e7b7b" />
+              <IconButton onClick={this.toggleModal} aria-label="Close modal" >
+                <BsX width="2em" height="2em" fill="#7e7b7b" size="40px" position="absolute" top="10px" right="10px" />
               </IconButton>
             </div>
 
